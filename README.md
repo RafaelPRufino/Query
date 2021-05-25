@@ -2,9 +2,9 @@
 
 Simples biblioteca PHP com a função de auxiliar nas execuções de Query's SQL.
 
-Projeto foi criado ainda em 2012 com a intenção de praticar programação e facilitar consultas MYSQL com PHP 5.3. 
+Projeto foi criado ainda em 2012 com a intenção de facilitar consultas MYSQL com PHP 5.3. 
 
-Agora, 2021, foi atualizado com funções ORM e etc.
+Agora, em 2021, foi atualizado com funções ORM e etc.
 
 ```php
 <?php
