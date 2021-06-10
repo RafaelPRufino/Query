@@ -1,6 +1,6 @@
 {
   "name": "punk_query",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "dependencies": {
     "semantic-release": "^17.4.2"
@@ -15,7 +15,7 @@
     }
   },
   "scripts": {
-	"commit": "git add . && git cz",
+    "commit": "git add . && git cz",
     "release": "standard-version"
   },
   "husky": {
