@@ -16,6 +16,10 @@ namespace Punk\Query\Connectors;
 class SQLiteConnector extends Connector implements ConnectorInterface {
 
     public function connect(array $options): \PDO {
+        if ($this->hasPDO($options)) {
+            return $this->getPDO($options);
+        }
+
         [$username, $password, $file] = [
             $options['username'] ?? null,
             $options['password'] ?? null,
@@ -23,7 +27,8 @@ class SQLiteConnector extends Connector implements ConnectorInterface {
         ];
 
         $dsn = realpath($file);
-    
+
         return $this->createConnection("sqlite:$dsn", $username, $password, $options);
     }
+
 }

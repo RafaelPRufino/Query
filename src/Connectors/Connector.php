@@ -65,4 +65,15 @@ abstract class Connector {
         ];
         return $database;
     }
+    
+    protected function getPDO($options) {
+        [$pdo] = [
+            $options['connection'] ?? null
+        ];
+        return $pdo;
+    }
+    
+    protected function hasPDO($options): bool {
+        return !empty($this->getPDO($options));
+    }
 }

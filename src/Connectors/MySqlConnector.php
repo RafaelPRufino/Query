@@ -16,6 +16,10 @@ namespace Punk\Query\Connectors;
 class MySqlConnector extends Connector implements ConnectorInterface {
 
     public function connect(array $options): \PDO {
+        if($this->hasPDO($options)){
+           return $this->getPDO($options);
+        }        
+        
         [$username, $password] = [
             $options['username'] ?? null,
             $options['password'] ?? null
