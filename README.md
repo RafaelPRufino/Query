@@ -28,12 +28,12 @@ foreach ($users as $user) {
 }
 
 // listing some users || listando alguns usuários
-foreach ($users->where(['enable' => true]) as $user) {
+foreach ($users->where(['enable' , true]) as $user) {
     echo $user->full_name;
 }
 
 // listing some users || listando alguns usuários
-foreach ($users->where(['enable' => true]) as $user) {
+foreach ($users->where(['enable' , true]) as $user) {
     echo $user->full_name;
 }
 
