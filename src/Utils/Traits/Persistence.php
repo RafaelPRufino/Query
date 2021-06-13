@@ -38,6 +38,18 @@ trait Persistence {
                 $find = $this->classname::find($id);
                 $this->config($find->attributes);
             }
+        } else if (!$model->incrementing) {
+            $attributes = $model->getAttributes();
+            
+            $id = $model->getAttribute($model->getModelKeyName());
+             
+            $columns = $this->filterColumns($attributes);
+           
+            $model->insert($columns, $model->getModelKeyName());
+            if (!empty($id)) {               
+                $find = $this->classname::find($id);
+                $this->config($find->attributes);
+            }
         }
 
         $this->performSaveRelations();

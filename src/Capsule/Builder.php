@@ -252,6 +252,15 @@ class Builder implements Iterator, JsonSerializable {
         $finded = $this->getQuery()->forQuery()->where([$this->getModel()->getModelKeyName(), ' = ', $id]);
         return $this->firstElement($finded);
     }
+		 
+    /**
+     * Find Object ById
+     * @param int|string $id configuração do where
+     * @return Object
+     */
+    public function findOrDefault($id) {
+       return $this->find($id) ?? $this->newModel([]);
+    }
 
     /**
      * First Object 
