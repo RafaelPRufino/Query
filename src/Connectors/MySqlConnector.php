@@ -37,11 +37,13 @@ class MySqlConnector extends Connector implements ConnectorInterface {
     }
 
     private function getDsn($options) {
-        [$database, $driver, $port] = [
+        [$database, $driver, $port, $host] = [
             $options['database'] ?? null,
             $options['driver'] ?? $this->getDriver()->getName(),
             $options['port'] ?? 0,
+			$options['host'] ?? 'localhost',
         ];
+		
         $dsn = "%s:";
         $configuarion = [$driver];
 
@@ -53,6 +55,11 @@ class MySqlConnector extends Connector implements ConnectorInterface {
         if (!empty($database)) {
             $dsn = $dsn . "dbname=%s;";
             $configuarion[] = $database;
+        }
+		
+		if (!empty($database)) {
+            $dsn = $dsn . "host=%s;";
+            $configuarion[] = $host;
         }
 
         return call_user_func_array('sprintf', [$dsn, ...$configuarion]);
