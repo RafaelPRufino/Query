@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/RafaelPRufino/Query/compare/v1.1.1...v1.1.2) (2021-06-16)
+
+
+### Bug Fixes
+
+* **add host the in connection:** add host the in connection ([6082f67](https://github.com/RafaelPRufino/Query/commit/6082f671f9475a215cea29ba43e4f7271b09db63))
+
 ### [1.1.1](https://github.com/RafaelPRufino/Query/compare/v1.1.0...v1.1.1) (2021-06-13)
 
 ## 1.1.0 (2021-06-10)
