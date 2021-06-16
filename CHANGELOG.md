@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/RafaelPRufino/Query/compare/v1.1.2...v2.0.0) (2021-06-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **refactor library:** Add Suport for Model
+
+* **refactor library:** refactor Library ([7e23b0a](https://github.com/RafaelPRufino/Query/commit/7e23b0aca794104fc38a511c50f711b6082e589c))
+
 ### [1.1.2](https://github.com/RafaelPRufino/Query/compare/v1.1.1...v1.1.2) (2021-06-16)
 
 
