@@ -15,8 +15,7 @@ namespace Punk\Query\Connectors;
 
 use \Punk\Query\Drivers\DriverInterface;
 use \Punk\Query\Connections\ConnectionFactory;
-use PDO;
-use PDOException;
+use \PDO; 
 
 abstract class Connector {
 
@@ -52,7 +51,7 @@ abstract class Connector {
      * @return PDO
      * */
     protected function createConnection(string $dsn, string $username = null, string $password = null, Array $options = null): \PDO {
-        return new PDO($dsn, $username, $password, $options);
+       return new PDO($dsn, $username, $password, $options);
     }
 
     public function getConnection(Array $configuration) {

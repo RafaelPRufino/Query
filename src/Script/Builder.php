@@ -17,7 +17,6 @@ use \Punk\Query\Connections\ConnectionInterface;
 use \Punk\Query\Script\Languages\Language;
 use \Punk\Query\Utils\Container;
 use \Punk\Query\Utils\Arr;
-use \Punk\Query\Utils\Str;
 use \Punk\Query\Script\Clauses\Join;
 use \Punk\Query\Script\Clauses\Where;
 

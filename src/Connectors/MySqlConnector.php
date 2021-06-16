@@ -16,23 +16,23 @@ namespace Punk\Query\Connectors;
 class MySqlConnector extends Connector implements ConnectorInterface {
 
     public function connect(array $options): \PDO {
-        if($this->hasPDO($options)){
-           return $this->getPDO($options);
-        }        
-        
+        if ($this->hasPDO($options)) {
+            return $this->getPDO($options);
+        }
+
         [$username, $password] = [
             $options['username'] ?? null,
             $options['password'] ?? null
         ];
 
         $dsn = $this->getDsn($options);
-        $database = $this->getDatabase($options);
-        $pdo = $this->createConnection($dsn, $username, $password, $options);      
-        
-        if(!empty($database)){
+        $database = $this->getDatabase($options);        
+        $pdo = $this->createConnection($dsn, $username, $password, $options);
+
+        if (!empty($database)) {
             $pdo->exec("use `{$database}`;");
-        }  
-        
+        }
+
         return $pdo;
     }
 
@@ -41,9 +41,9 @@ class MySqlConnector extends Connector implements ConnectorInterface {
             $options['database'] ?? null,
             $options['driver'] ?? $this->getDriver()->getName(),
             $options['port'] ?? 0,
-			$options['host'] ?? 'localhost',
+            $options['host'] ?? 'localhost',
         ];
-		
+
         $dsn = "%s:";
         $configuarion = [$driver];
 
@@ -56,12 +56,12 @@ class MySqlConnector extends Connector implements ConnectorInterface {
             $dsn = $dsn . "dbname=%s;";
             $configuarion[] = $database;
         }
-		
-		if (!empty($database)) {
+
+        if (!empty($database)) {
             $dsn = $dsn . "host=%s;";
             $configuarion[] = $host;
-        }
-
+        } 
         return call_user_func_array('sprintf', [$dsn, ...$configuarion]);
     }
+
 }

@@ -13,8 +13,8 @@
 
 namespace Punk\Query;
 
-use Punk\Query\Utils\Container;
-use Punk\Query\Drivers\DriverFactory;
+use \Punk\Query\Utils\Container;
+use \Punk\Query\Drivers\DriverFactory;
 use \Punk\Query\Connections\ConnectionInterface;
 
 class Database {
@@ -25,7 +25,7 @@ class Database {
     protected Connections\ConnectionInterface $connection;
     protected Array $configuration;
 
-    public function __construct(Array $configuration) {
+    public function __construct(Array $configuration , Array $observables = []) {
         $this->container = new Container();
         $this->container->bind('config::connection', $configuration);
 
@@ -33,11 +33,17 @@ class Database {
         $this->driver = DriverFactory::resolveFactory($configuration);
         $this->connector = $this->driver->getConnector();
 
-        $this->config();
+        $this->config($observables);
     }
 
-    public function config() {
-        Capsule\Capsule::init($this);
+    public function config(Array $observables = []) {    
+        if(!is_array($observables)){
+            return;
+        }
+        
+        foreach ($observables as $class){
+            $class::init($this);
+        }
     }
 
     /**
@@ -71,5 +77,4 @@ class Database {
     public function __call($method, $parameters) {
         return $this->connection()->$method(...$parameters);
     }
-
 }

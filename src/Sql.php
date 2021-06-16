@@ -7,6 +7,8 @@ use \Punk\Query\Connections\ConnectionInterface;
 class Sql {
 
     public static Database $instance;
+    
+    protected static array $observables = [];
 
     /**
      * Configura conexão com banco de dados.
@@ -16,6 +18,13 @@ class Sql {
      */
     public static function setConnection(Array $configuration): void {
         static::$instance = new Database($configuration);
+    }
+
+    public static function extend($class): void {
+        static::$observables [] = $class;
+        if(!empty(static::$instance)){
+            static::$instance->config(static::$observables);
+        }
     }
 
     /**
@@ -37,4 +46,5 @@ class Sql {
     public static function __callStatic($method, $parameters) {
         return static::connection()->$method(...$parameters);
     }
+
 }
