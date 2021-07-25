@@ -1,4 +1,4 @@
-# Query
+# Punk\Query
 
 Simples biblioteca PHP com a função de auxiliar nas execuções de Query's SQL.
 
