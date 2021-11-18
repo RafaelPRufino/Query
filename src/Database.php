@@ -25,7 +25,7 @@ class Database {
     protected Connections\ConnectionInterface $connection;
     protected Array $configuration;
 
-    public function __construct(Array $configuration , Array $observables = []) {
+    public function __construct(Array $configuration, Array $observables = []) {
         $this->container = new Container();
         $this->container->bind('config::connection', $configuration);
 
@@ -36,12 +36,12 @@ class Database {
         $this->config($observables);
     }
 
-    public function config(Array $observables = []) {    
-        if(!is_array($observables)){
+    public function config(Array $observables = []) {
+        if (!is_array($observables)) {
             return;
         }
-        
-        foreach ($observables as $class){
+
+        foreach ($observables as $class) {
             $class::init($this);
         }
     }
@@ -62,7 +62,7 @@ class Database {
      */
     public function connection(): ConnectionInterface {
         if (!isset($this->connection)) {
-            $this->connection = $this->connection = $this->connector->getConnection($this->configuration);
+            $this->connection = $this->connector->getConnection($this->configuration);
         }
         return $this->connection;
     }
@@ -77,4 +77,5 @@ class Database {
     public function __call($method, $parameters) {
         return $this->connection()->$method(...$parameters);
     }
+
 }
